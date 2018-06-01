@@ -2,10 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 
- function House (){
+ function House (props){
+     console.log(props)
+     let answers = props.answers.map((e,i) => {
+         return(
+             <div key={i}>{e}</div> 
+         )
+     })
     return (
         <div>
-            
+            <h1>Houses</h1>
+            {answers}
         </div> 
     )
 }
@@ -13,15 +20,7 @@ import { connect } from 'react-redux';
 function mapStateToProps (state) {
     return {
         
-              id: state.id,
-              name: state.name,
-              address: state.address,
-              city: state.city,
-              state: state.state,
-              zip: state.zip,
-              img: state.img,
-              mortgage: state.mortgage,
-              rent: state.rent
+             answers:state.answers
           
     }
 }

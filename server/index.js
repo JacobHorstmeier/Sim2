@@ -14,6 +14,8 @@ massive(process.env.CONNECTION_STRING).then(db => app.set('db', db))
 
 
 app.get('/api/houses', ctrl.getHouses)
+app.post('/api/houses', ctrl.addHouse)
+app.delete('./api/houses', ctrl.deleteHouse)
 
 
 const port = 3030;

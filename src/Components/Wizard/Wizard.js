@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { addAnswer } from '../../ducks/reducer';
+import { connect } from 'react-redux';
 
 
-export default class Wizard extends Component {
-    constructor (){
-        super();
+class Wizard extends Component {
+    constructor (props){
+        super(props);
 
         this.state = {
             name: '',
@@ -48,7 +50,7 @@ export default class Wizard extends Component {
                     Zip <br />
                     <input name='city' value={this.state.city} onChange={this.handleInput} /> 
                     <input name='state' value={this.state.state} onChange={this.handleInput}/> 
-                    <input type='number' name='Zip' value={this.state.zipcode}onChange={this.handleInput}/>
+                    <input name='zipcode' value={this.state.zipcode} onChange={this.handleInput}/>
 
 
                 
@@ -57,8 +59,18 @@ export default class Wizard extends Component {
 
                 this is the Wizard view
                 <br />
-               <Link to='/'> <button onClick={() => this.handleClick()}>Cancel</button></Link>
+               <Link to='/'> <button >Cancel</button></Link>
+                <Link to='/'> <button onClick={() => this.handleClick()}>Complete</button> </Link>
             </div> 
         )
     }
 }
+
+
+function mapStateToProps(state) {
+    return {
+        answers: state.answers
+    }
+}
+
+export default connect(mapStateToProps, { addAnswer })(Wizard)

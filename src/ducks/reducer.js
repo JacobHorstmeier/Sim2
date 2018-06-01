@@ -13,7 +13,8 @@ export function addAnswer(answer) {
 
 function reducer( state=intitialState, action) {
     switch( action.type){
-
+        case ADD_ANSWER:
+            return Object.assign({}, state, {answers: action.payload})
 
 
         default: return state;
